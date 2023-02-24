@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+    nodejs:
+      container_name: hypotheses
+      image: node:19.2-slim
+      volumes:
+      - ./node_modules:/node_modules
+      - ./package.json:/package.json
+      - ./src/:/src
+      ports:
+        - 3000:3000
+        - 9229:9229
+      environment:
+        - NODE_ENV=development
+        - HOST=0.0.0.0
+        - PORT=3000
+        - URL_K8S=https://kubernetes.docker.internal:6443
+      command: "./node_modules/nodemon/bin/nodemon.js --inspect=0.0.0.0:9229 --signal SIGINT --nolazy ./src/index.js"

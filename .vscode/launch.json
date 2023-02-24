@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Local",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/src/index.js",
+            "env": {
+                "HOST": "0.0.0.0",
+                "PORT": "3000",
+            },
+            "runtimeExecutable": "/home/levitom/.nvm/versions/node/v19.6.0/bin/node"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Debug Docker",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "restart": true,
+            "remoteRoot": "/",
+            "localRoot": "${workspaceFolder}"
+        }
+    ]
+}
